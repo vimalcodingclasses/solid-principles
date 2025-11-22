@@ -33,13 +33,27 @@
 // areaObj.calculateArea(new Square(5));
 
 /*************LSP_Adherence*************/
-import { React } from "./LSP/LSP_Adherence/React";
-import { Squa } from "./LSP/LSP_Adherence/Squa";
-import { CalculateArea } from "./LSP/LSP_Adherence/CalculateArea";
+// import { React } from "./LSP/LSP_Adherence/React";
+// import { Squa } from "./LSP/LSP_Adherence/Squa";
+// import { CalculateArea } from "./LSP/LSP_Adherence/CalculateArea";
 
-const areaObj = new CalculateArea();
-const reactArea = areaObj.calculateTotalArea(new React(10, 5));
-console.log(`Area of rectangle: ${reactArea}`);
-const sqArea = areaObj.calculateTotalArea(new Squa(10));
-console.log(`Area of square is: ${sqArea}`)
+// const areaObj = new CalculateArea();
+// const reactArea = areaObj.calculateTotalArea(new React(10, 5));
+// console.log(`Area of rectangle: ${reactArea}`);
+// const sqArea = areaObj.calculateTotalArea(new Squa(10));
+// console.log(`Area of square is: ${sqArea}`);
+
+
+/*************DIP_Adherence*************/
+import { OrderProcessors } from "./DIP/DIP_Adherence/OrderProcessor";
+import { MySqlDatabase } from "./DIP/DIP_Adherence/MySQLDatabase";
+import { MongoDBDatabase } from "./DIP/DIP_Adherence/MongoDBDatabase";
+
+const mysqlProcess = new OrderProcessors(new MySqlDatabase());
+mysqlProcess.process({ id: 101, amount: 50.00 });
+
+const mongodbProcess = new OrderProcessors(new MongoDBDatabase());
+mongodbProcess.process({ id: 101, amount: 50.00 });
+
+
 
